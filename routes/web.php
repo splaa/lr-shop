@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HelloController;
+use App\Http\Controllers\TaskController;
 use App\Models\Greeting;
 use Illuminate\Support\Facades\Route;
 
@@ -27,4 +28,6 @@ Route::get('/', 'WelcomeController@index')->name('welcome');
 Route::get('first-greeting', function(){
    return Greeting::first()->body;
 });
+
+Route::resource('tasks', TaskController::class)->names('tasks');
 
