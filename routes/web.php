@@ -17,14 +17,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/', function () {
+    return view('welcome');
+});
 Route::get('/hello', [HelloController::class, 'index']);
 
 
 //Book
-Route::get('/',[WelcomeController::class,'index'])->name('welcome');
+//Route::get('/',[WelcomeController::class,'index'])->name('welcome');
 
 Route::get('first-greeting', function(){
    return Greeting::first()->body;
