@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Article;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 
 class ArticleFactory extends Factory
@@ -31,6 +32,7 @@ class ArticleFactory extends Factory
             'body' => $this->faker->paragraph(100, true),
             'slug' => $slug,
             'img' => 'https://via.placeholder.com/600.png/5F113B/fff?text=Laravel:8.*',
+            'published_at' => Carbon::now() ,
             'created_at' => $this->faker->dateTimeBetween('-1 years'),
 
         ];
