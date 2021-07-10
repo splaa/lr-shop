@@ -4,7 +4,7 @@
 namespace App\Http\Controllers;
 
 
-class Welcome extends Controller
+class WelcomeController extends Controller
 {
     public function index()
     {
