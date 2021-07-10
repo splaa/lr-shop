@@ -11,3 +11,11 @@
 https://github.com/rageserg/laravel-app
 
 https://github.com/alexeymezenin/laravel-best-practices/blob/master/russian.md
+
+    
+    docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v $(pwd):/opt \
+    -w /opt \
+    laravelsail/php80-composer:latest \
+    composer install --ignore-platform-reqs
