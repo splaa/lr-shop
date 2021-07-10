@@ -17,4 +17,9 @@ class Comment extends Model
         return $this->belongsTo(Article::class);
     }
 
+    public function createAtForHumans()
+    {
+        return $this->created_at->diffForHumans();
+    }
+
 }

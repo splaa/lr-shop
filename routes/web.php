@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TaskController;
@@ -19,9 +20,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/article', [HomeController::class, 'index'])->name('article.index');
-Route::get('/article/{id}', [HomeController::class, 'index'])->name('article.show');
-Route::get('/article/{tag}', [HomeController::class, 'index'])->name('article.tag');
+Route::get('/articles', [ArticleController::class, 'index'])->name('article.index');
+Route::get('/articles/{slug}', [ArticleController::class, 'show'])->name('article.show');
+Route::get('/articles/tag/{tag}', [ArticleController::class, 'allByTag'])->name('article.tag');
 
 
 Route::get('/hello', [HelloController::class, 'index']);
