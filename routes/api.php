@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ArticleController;
+use App\Http\Controllers\Api\CommentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +21,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::get('article-json/{slug}', [ArticleController::class, 'show']);
+Route::get('article-json', [ArticleController::class, 'show']);
 
-Route::get('article-views-increment', [ArticleController::class, 'viewsIncrement']);
-Route::get('article-likes-increment', [ArticleController::class, 'likesIncrement']);
+Route::put('article-views-increment', [ArticleController::class, 'viewsIncrement']);
+Route::put('article-likes-increment', [ArticleController::class, 'likesIncrement']);
+
+Route::post('article-add-comment', [CommentController::class, 'store']);
+
+Route::fallback(function() {
+    abort(404);
+});

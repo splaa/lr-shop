@@ -12,6 +12,7 @@ import store from './store'
 Vue.component('article-component', require('./components/ArticleComponent/ArticleComponent').default);
 Vue.component('views-component', require('./components/ViewsComponent/ViewsComponent').default);
 Vue.component('likes-component', require('./components/LikesComponent/LikesComponent').default);
+Vue.component('comments-component', require('./components/CommentsComponent/CommentsComponent').default);
 
 const app = new Vue({
     store,
@@ -23,7 +24,7 @@ const app = new Vue({
         console.log(url)
         console.log(slug)
         this.$store.commit('SET_SLUG', slug)
-        this.$store.dispatch('getArticleDate', slug)
-        this.$store.dispatch('viewsIncrement', slug)
+        this.$store.dispatch('article/getArticleDate', slug)
+        this.$store.dispatch('article/viewsIncrement', slug)
     }
 });

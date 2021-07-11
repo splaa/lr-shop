@@ -22,25 +22,10 @@ class ArticleController extends Controller
         $this->service = $service;
     }
 
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
-    public function store(Request $request)
+    public function show(Request $request): ArticleResource
     {
-        //
-    }
-
-    public function show(string $slug): ArticleResource
-    {
-        return new ArticleResource($this->service->getArticleBySlug($slug));
+        return new ArticleResource($this->service->getArticleBySlug($request));
     }
 
     private function getArticleBySlug(string $slug): Article
