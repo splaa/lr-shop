@@ -20,4 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::get('article-json/{id}', [ArticleController::class, 'show']);
+Route::get('article-json/{slug}', [ArticleController::class, 'show']);
+
+Route::get('article-views-increment', [ArticleController::class, 'viewsIncrement']);
+Route::get('article-likes-increment', [ArticleController::class, 'likesIncrement']);
