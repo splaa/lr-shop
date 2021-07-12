@@ -47,6 +47,17 @@ namespace App\Models{
 	class Article extends \Eloquent {}
 }
 
+namespace App\Models\Book{
+/**
+ * App\Models\Book\Task
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Task newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Task newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Task query()
+ */
+	class Task extends \Eloquent {}
+}
+
 namespace App\Models{
 /**
  * App\Models\Comment

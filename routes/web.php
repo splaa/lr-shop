@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Book\InvitationController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\HelloController;
+use App\Http\Controllers\Book\TasksController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\Book\WelcomeController;
@@ -35,5 +37,9 @@ Route::get('first-greeting', function(){
    return Greeting::first()->body;
 });
 
-Route::resource('tasks', TaskController::class)->names('tasks');
+Route::resource('tasks', TasksController::class)->names('tasks');
 
+Route::get('invitations/{invitation}/{answer}', [InvitationController::class])
+    ->name('invitation')
+    ->middleware('signed')
+;
