@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\HelloController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\Book\WelcomeController;
 use App\Models\Greeting;
@@ -17,14 +19,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/articles', [ArticleController::class, 'index'])->name('article.index');
+Route::get('/articles/{slug}', [ArticleController::class, 'show'])->name('article.show');
+Route::get('/articles/tag/{tag}', [ArticleController::class, 'allByTag'])->name('article.tag');
+
+
 Route::get('/hello', [HelloController::class, 'index']);
 
 
 //Book
-Route::get('/',[WelcomeController::class,'index'])->name('welcome');
+//Route::get('/',[WelcomeController::class,'index'])->name('welcome');
 
 Route::get('first-greeting', function(){
    return Greeting::first()->body;
