@@ -13,9 +13,9 @@ class TasksController extends Controller
         return 'Hello, World!!!';
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        Task::create(request()->only(['title', 'description']));
+        Task::create($request->only(['title', 'description']));
         return redirect(route('tasks.index'));
     }
 

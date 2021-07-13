@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\Book\InvitationController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\Book\UpdateUserAvatar;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\Book\TasksController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\Book\WelcomeController;
+use App\Models\Book\Conference;
 use App\Models\Greeting;
 use Illuminate\Support\Facades\Route;
 
@@ -43,3 +45,7 @@ Route::get('invitations/{invitation}/{answer}', [InvitationController::class])
     ->name('invitation')
     ->middleware('signed')
 ;
+Route::get('users/{user}/update-avatar', UpdateUserAvatar::class);
+Route::get('/conference/{conference}', function (Conference $conference){
+    return view('welcome')->with('conference', $conference);
+});
