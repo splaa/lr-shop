@@ -3,6 +3,7 @@
 use App\Http\Controllers\Book\InvitationController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Book\UpdateUserAvatar;
+use App\Http\Controllers\CookieController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\Book\TasksController;
 use App\Http\Controllers\HomeController;
@@ -49,3 +50,6 @@ Route::get('users/{user}/update-avatar', UpdateUserAvatar::class);
 Route::get('/conference/{conference}', function (Conference $conference){
     return view('welcome')->with('conference', $conference);
 });
+
+Route::get('/cookie/set', [CookieController::class, 'setCookie']);
+Route::get('/cookie/get', [CookieController::class, 'getCookie']);

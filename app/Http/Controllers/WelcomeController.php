@@ -8,7 +8,8 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        return 'Hello, World!';
+
+        return response('Hello, World!')->withCookie('Time Button',1,1 );
     }
-//todo: str 83 users questions
+//todo: str 86 Blade chapter 4
 }
