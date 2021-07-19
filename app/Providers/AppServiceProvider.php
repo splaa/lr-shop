@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Book\Post;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -27,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
         $this->activeLinks();
+        \view()->share('recentPost', Post::recent());
     }
 
     public function activeLinks()

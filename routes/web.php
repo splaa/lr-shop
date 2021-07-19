@@ -4,6 +4,7 @@ use App\Http\Controllers\Book\InvitationController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Book\UpdateUserAvatar;
 use App\Http\Controllers\CookieController;
+use App\Http\Controllers\DynamicWeb\StartController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\Book\TasksController;
 use App\Http\Controllers\HomeController;
@@ -53,3 +54,6 @@ Route::get('/conference/{conference}', function (Conference $conference){
 
 Route::get('/cookie/set', [CookieController::class, 'setCookie']);
 Route::get('/cookie/get', [CookieController::class, 'getCookie']);
+
+//Book Dynamic Web site
+Route::any('start-php', [StartController::class, 'index']);

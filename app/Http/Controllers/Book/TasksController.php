@@ -10,7 +10,11 @@ class TasksController extends Controller
 {
     public function index(): string
     {
-        return 'Hello, World!!!';
+        $hello = 'Hello';
+        return view('book.tasks.index')->with([
+            'hello' => $hello,
+            'helloWorld' => 'Hello, Test'
+        ]);
     }
 
     public function store(Request $request)
@@ -19,5 +23,4 @@ class TasksController extends Controller
         return redirect(route('tasks.index'));
     }
 
-    //todo:splx Внедрение зависимостей в контроллереры str:69
 }
