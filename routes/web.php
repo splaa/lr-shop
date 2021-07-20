@@ -57,3 +57,10 @@ Route::get('/cookie/get', [CookieController::class, 'getCookie']);
 
 //Book Dynamic Web site
 Route::any('start-php', [StartController::class, 'index']);
+
+
+Route::get('art', function(){
+
+    $post = \App\Models\Book\Post::recent();
+    return view('welcome')->with('post', $post);
+});

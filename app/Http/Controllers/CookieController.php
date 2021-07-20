@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DateTime;
+use DateTimeImmutable;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -41,7 +42,7 @@ class CookieController extends Controller
         $d2=new DateTime("2012-07-08 11:14:20");
         $diff=$d1->diff($d2);
 
-        $now = new \DateTimeImmutable();
+        $now = new DateTimeImmutable();
         $new = $now->add($diff);
         dd($now,$new);
    }

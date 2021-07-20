@@ -9,7 +9,7 @@ class Post extends Model
 {
     use HasFactory;
 
-    public static function recent()
+    public static function recent(): string
     {
         return 'Todo Hello, World';
     }
