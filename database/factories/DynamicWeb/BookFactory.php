@@ -26,6 +26,5 @@ class BookFactory extends Factory
            'published_at' => '1996',
             'isbn' => '0-425-15863-2'
         ];
-        //todo: 41 Grafik
     }
 }

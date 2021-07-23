@@ -10,5 +10,5 @@ class StartController extends Controller
     public function index()
     {
         return view('dynamic-web.index');
-   }
+    }
 }

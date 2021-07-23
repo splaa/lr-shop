@@ -9,7 +9,6 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        //todo: Prefixes paths page:61
         return __FILE__;
     }
 }

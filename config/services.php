@@ -18,7 +18,7 @@ return [
         'api_key' => env('BUGSNAG_API_KEY'),
     ],
 
-    'sparkpost' =>[
+    'sparkpost' => [
             'secret' => 'abcdefg',
     ],
 

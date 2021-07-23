@@ -2,7 +2,6 @@
 {{ $hello }} , Blade <br>
 <p>
     @{{ $hello }} , Blade
-{{--Todo str 100 --}}
 </p>
 @{{ hello }} , Blade
 <p>

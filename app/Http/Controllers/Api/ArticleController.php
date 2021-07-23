@@ -26,8 +26,7 @@ class ArticleController extends Controller
 
     public function index(): Collection|array
     {
-        $articles = Article::all();
-        return $articles;
+        return Article::all();
     }
 
     public function show(Request $request): ArticleResource

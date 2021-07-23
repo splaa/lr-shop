@@ -1,16 +1,16 @@
 <?php
 
-use App\Http\Controllers\Book\InvitationController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\Book\InvitationController;
+use App\Http\Controllers\Book\TasksController;
 use App\Http\Controllers\Book\UpdateUserAvatar;
 use App\Http\Controllers\CookieController;
 use App\Http\Controllers\DynamicWeb\StartController;
 use App\Http\Controllers\HelloController;
-use App\Http\Controllers\Book\TasksController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\TaskController;
-use App\Http\Controllers\Book\WelcomeController;
+use App\Http\Services\AnalyticsService;
 use App\Models\Book\Conference;
+use App\Models\Book\Post;
 use App\Models\Greeting;
 use Illuminate\Support\Facades\Route;
 
@@ -37,8 +37,8 @@ Route::get('/hello', [HelloController::class, 'index']);
 //Book
 //Route::get('/',[WelcomeController::class,'index'])->name('welcome');
 
-Route::get('first-greeting', function(){
-   return Greeting::first()->body;
+Route::get('first-greeting', function () {
+    return Greeting::first()->body;
 });
 
 Route::resource('tasks', TasksController::class)->names('tasks');
@@ -48,7 +48,7 @@ Route::get('invitations/{invitation}/{answer}', [InvitationController::class])
     ->middleware('signed')
 ;
 Route::get('users/{user}/update-avatar', UpdateUserAvatar::class);
-Route::get('/conference/{conference}', function (Conference $conference){
+Route::get('/conference/{conference}', function (Conference $conference) {
     return view('welcome')->with('conference', $conference);
 });
 
@@ -59,8 +59,13 @@ Route::get('/cookie/get', [CookieController::class, 'getCookie']);
 Route::any('start-php', [StartController::class, 'index']);
 
 
-Route::get('art', function(){
+Route::get('art', function () {
 
-    $post = \App\Models\Book\Post::recent();
+    $post = Post::recent();
     return view('welcome')->with('post', $post);
+});
+
+Route::get('backend/sales', function (AnalyticsService $analytics){
+    return view('book.backend.sales-graphs')
+        ->with('analytics', $analytics);
 });

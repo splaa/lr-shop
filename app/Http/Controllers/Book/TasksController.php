@@ -22,5 +22,4 @@ class TasksController extends Controller
         Task::create($request->only(['title', 'description']));
         return redirect(route('tasks.index'));
     }
-
 }

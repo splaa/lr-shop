@@ -49,11 +49,63 @@ namespace App\Models{
 
 namespace App\Models\Book{
 /**
+ * App\Models\Book\Conference
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property string $description
+ * @property int $city
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Conference newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Conference newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Conference query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Conference whereCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Conference whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Conference whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Conference whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Conference whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Conference whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Conference whereUpdatedAt($value)
+ */
+	class Conference extends \Eloquent {}
+}
+
+namespace App\Models\Book{
+/**
+ * App\Models\Book\Post
+ *
+ * @property int $id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Post newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Post newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Post query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereUpdatedAt($value)
+ */
+	class Post extends \Eloquent {}
+}
+
+namespace App\Models\Book{
+/**
  * App\Models\Book\Task
  *
+ * @property int $id
+ * @property string $title
+ * @property string $description
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|Task newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Task newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Task query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Task whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Task whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Task whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Task whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Task whereUpdatedAt($value)
  */
 	class Task extends \Eloquent {}
 }
@@ -81,6 +133,30 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Comment whereUpdatedAt($value)
  */
 	class Comment extends \Eloquent {}
+}
+
+namespace App\Models\DynamicWeb{
+/**
+ * App\Models\DynamicWeb\Book
+ *
+ * @property int $id
+ * @property string $title
+ * @property string $isbn
+ * @property string $published_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Database\Factories\DynamicWeb\BookFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Book newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Book newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Book query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Book whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Book whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Book whereIsbn($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Book wherePublishedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Book whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Book whereUpdatedAt($value)
+ */
+	class Book extends \Eloquent {}
 }
 
 namespace App\Models{

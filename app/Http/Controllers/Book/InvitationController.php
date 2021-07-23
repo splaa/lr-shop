@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Http\Controllers\Book;
-
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -16,21 +14,21 @@ class InvitationController extends Controller
         if (!$request->hasValidSignature()) {
             abort(Response::HTTP_FORBIDDEN);
         }
-       $link = URL::route('invitation', [
+        $link = URL::route('invitation', [
            'invitation' => 12345,
            'answer' => 'yes'
-       ]);
-       $linkSigned = URL::signedRoute('invitation', [
+        ]);
+        $linkSigned = URL::signedRoute('invitation', [
            'invitation' => 12345,
            'answer' => 'yes'
-       ]);
-       $linkSigned = URL::temporarySignedRoute('invitation',
-          now()->addHours(2),
-           [
-           'invitation' => 12345,
-           'answer' => 'yes'
-       ]);
-
+        ]);
+        $linkSigned = URL::temporarySignedRoute(
+            'invitation',
+            now()->addHours(2),
+            [
+            'invitation' => 12345,
+            'answer' => 'yes'
+            ]
+        );
     }
-
 }

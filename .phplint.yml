@@ -1,0 +1,9 @@
+path: ./
+jobs: 10
+cache: storage/.phplint.json
+extensions:
+  - php
+exclude:
+  - vendor
+  - storage
+warning: false
