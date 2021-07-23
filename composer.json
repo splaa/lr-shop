@@ -59,6 +59,8 @@
         "cs-check": "phpcs",
         "cs-fix": "phpcbf",
         "psalm": "psalm",
+        "test": "phpunit --coolor=always",
+        "app": "php bin/app.php --ansi",
         "some-command": "php artisan command:name --ansi"
     },
     "extra": {
