@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\WebSelf\PostController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -29,6 +30,14 @@ Route::post('email', function (Request $request) {
         'age' => $request->get('age')
     ]);
 })->name('w-self.email');
-Route::get('post/{id}/{slug}', static function ($id, $slug) {
-    return 'post';
+//Route::get('post/{id}/{slug}', static function ($id, $slug) {
+//$id += 1;
+//    $slug .= ' hello';
+//    return 'post';
+//});
+
+Route::resource('posts', PostController::class)->names('posts');
+
+Route::fallback(function () {
+    abort(404, 'Oops! Page not found...');
 });

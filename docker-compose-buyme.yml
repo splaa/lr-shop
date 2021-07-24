@@ -13,6 +13,9 @@ services:
     environment:
       WWWUSER: '${WWWUSER}'
       LARAVEL_SAIL: 1
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    tty: true
     volumes:
       - '.:/var/www/html'
       - './image:/var/www/buymeua/data/www/storage.buymeua.com/image'
