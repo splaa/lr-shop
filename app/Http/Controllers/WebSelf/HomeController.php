@@ -11,28 +11,14 @@ class HomeController extends Controller
 {
     public function index()
     {
-        
-        DB::beginTransaction();
-        try {
-            $query = DB::insert(
-                'INSERT INTO posts (title, content, created_at)
-                                    VALUES (:title, :content, :createdAt)',
-                ['title' => 'Article 5', 'content' => 'content post5', 'createdAt' => now()]
-            );
-
-            DB::update(
-                'UPDATE posts SET updated_at = :now 
-                    WHERE updated_at IS NULL ',
-                ['now' => now()]
-            );
-            DB::commit();
-        } catch (\Exception $e) {
-            DB::rollBack();
-            Log::info($e->getMessage());
-        }
-
-
-        return DB::select("select posts.* from posts where id > :id", ['id' => 2]);
+        $query = DB::table('country')
+            ->select('Code', 'Name')
+            ->limit(5)
+            ->orderByDesc('Name')
+            ->get()
+        ;
+        dd($query);
+        return $query;
         return view('web-self.home.index');
     }
 
