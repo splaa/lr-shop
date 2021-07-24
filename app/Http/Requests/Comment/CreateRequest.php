@@ -36,7 +36,6 @@ class CreateRequest extends FormRequest
             'body.required' => 'Это поле надо обязательно заполнить',
             'body.min' => 'Это поле должно быть длиннее 10 символов',
         ];
-
     }
 
     public function getSubject(): ?string
@@ -53,5 +52,4 @@ class CreateRequest extends FormRequest
     {
         return $this->request->get('article_id');
     }
-
 }

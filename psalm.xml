@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<psalm xmlns="https://getpsalm.org/schema/config">
+    <projectFiles>
+        <directory name="app/Http"/>
+        <ignoreFiles>
+            <directory name="vendor"/>
+            <directory name="storage"/>
+            <directory name="node_modules"/>
+        </ignoreFiles>
+    </projectFiles>
+    <issueHandlers>
+        <InvalidReturnType errorLevel="info"/>
+        <LessSpecificReturnType errorLevel="info"/>
+    </issueHandlers>
+</psalm>

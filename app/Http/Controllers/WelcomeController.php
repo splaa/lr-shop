@@ -1,14 +1,12 @@
 <?php
 
-
 namespace App\Http\Controllers;
-
 
 class WelcomeController extends Controller
 {
     public function index()
     {
-        return 'Hello, World!';
+
+        return response('Hello, World!')->withCookie('Time Button', 1, 1);
     }
-//todo: str 58 Chapter 3  Group routes
 }

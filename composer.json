@@ -5,7 +5,7 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "^7.3|^8.0",
+        "php": "^8.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -18,10 +18,13 @@
         "barryvdh/laravel-ide-helper": "^2.10",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
-        "laravel/sail": "^1.0.1",
+        "laravel/sail": "2.*",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
-        "phpunit/phpunit": "^9.3.3"
+        "overtrue/phplint": "^3.0",
+        "phpunit/phpunit": "^9.3.3",
+        "squizlabs/php_codesniffer": "3.*",
+        "vimeo/psalm": "^4.8"
     },
     "autoload": {
         "psr-4": {
@@ -51,7 +54,14 @@
             "@php artisan ide-helper:generate",
             "@php artisan ide-helper:meta",
             "@php artisan ide-helper:model -N"
-        ]
+        ],
+        "lint": "phplint",
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf",
+        "psalm": "psalm",
+        "test": "phpunit --coolor=always",
+        "app": "php bin/app.php --ansi",
+        "some-command": "php artisan command:name --ansi"
     },
     "extra": {
         "laravel": {

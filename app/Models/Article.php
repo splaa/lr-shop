@@ -13,6 +13,7 @@ use Illuminate\Support\Str;
 class Article extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'title', 'body', 'img', 'slug'
     ];
