@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\WebSelf\HomeController;
 use App\Http\Controllers\WebSelf\PostController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -15,11 +16,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
-    $name = 'Andrii';
-    $age = '43';
-    return view('web-self.index', compact('name', 'age'));
-});
+Route::get('/', [HomeController::class, 'test']);
 
 Route::get('contact', function () {
     return view('web-self.contact');
