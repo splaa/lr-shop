@@ -4,6 +4,7 @@ use App\Http\Controllers\WebSelf\Admin\MainController;
 use App\Http\Controllers\WebSelf\HomeController;
 use App\Http\Controllers\WebSelf\Mail\ContactController;
 use App\Http\Controllers\WebSelf\PageController;
+use App\Http\Controllers\WebSelf\HomeController;
 use App\Http\Controllers\WebSelf\PostController;
 use App\Http\Controllers\WebSelf\UserController;
 use Illuminate\Support\Facades\Route;
