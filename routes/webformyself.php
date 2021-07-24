@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', [HomeController::class, 'test']);
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('contact', function () {
     return view('web-self.contact');
