@@ -35,6 +35,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Route::pattern('id', '[0-9]+');
+        Route::pattern('slug', '[A-Za-z0-9-]+');
+
         $this->configureRateLimiting();
 
         $this->routes(function () {
@@ -46,6 +49,10 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
+            Route::prefix('web-self')
+                ->middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/webformyself.php'));
         });
     }
 
