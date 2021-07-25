@@ -21,7 +21,7 @@ Route::get('/', [HomeController::class, 'index'])->name('web-self.home');
 Route::get('/page/about', [PageController::class, 'about'])->name('web-self.page.about');
 
 
-Route::resource('posts', PostController::class)->names('posts');
+Route::resource('posts', PostController::class)->names('web-self.posts');
 
 Route::fallback(function () {
     abort(404, 'Oops! Page not found...');

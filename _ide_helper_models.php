@@ -19,7 +19,7 @@ namespace App\Models{
  * @property string $slug
  * @property string $body
  * @property string $img
- * @property string $published_at
+ * @property string|null $published_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comments
@@ -77,13 +77,21 @@ namespace App\Models\Book{
  * App\Models\Book\Post
  *
  * @property int $id
+ * @property string $title
+ * @property string|null $content
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int $rubric_id
+ * @property int $comment_id
  * @method static \Illuminate\Database\Eloquent\Builder|Post newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Post newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Post query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereCommentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereContent($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereRubricId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereUpdatedAt($value)
  */
 	class Post extends \Eloquent {}
@@ -121,6 +129,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Article $article
+ * @property-read \App\Models\WebSelf\Post $post
  * @method static \Database\Factories\CommentFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Comment newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Comment newQuery()
@@ -180,6 +189,32 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Order
+ *
+ * @property int $id
+ * @property string $delivered
+ * @property string $paid
+ * @property string $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Order delivered()
+ * @method static \Illuminate\Database\Eloquent\Builder|Order newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Order newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Order paid()
+ * @method static \Illuminate\Database\Eloquent\Builder|Order query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Order status(string $status)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereDelivered($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order wherePaid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereUpdatedAt($value)
+ */
+	class Order extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\State
  *
  * @property int $id
@@ -204,6 +239,7 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $label
+ * @property string $title
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Article[] $articles
  * @property-read int|null $articles_count
  * @method static \Database\Factories\TagFactory factory(...$parameters)
@@ -212,6 +248,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Tag query()
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereLabel($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag whereTitle($value)
  */
 	class Tag extends \Eloquent {}
 }
@@ -244,5 +281,142 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  */
 	class User extends \Eloquent {}
+}
+
+namespace App\Models\WebSelf{
+/**
+ * Class City
+ *
+ * @package App\Models\WebSelf
+ * @mixin Builder
+ * @property int $ID
+ * @property string $Name
+ * @property string $CountryCode
+ * @property string $District
+ * @property int $Population
+ * @method static \Illuminate\Database\Eloquent\Builder|City newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|City newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|City query()
+ * @method static \Illuminate\Database\Eloquent\Builder|City whereCountryCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|City whereDistrict($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|City whereID($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|City whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|City wherePopulation($value)
+ */
+	class City extends \Eloquent {}
+}
+
+namespace App\Models\WebSelf{
+/**
+ * Class Country
+ *
+ * @package App\Models\WebSelf
+ * @mixin Builder
+ * @property string $Code
+ * @property string $Name
+ * @property string $Continent
+ * @property string $Region
+ * @property float $SurfaceArea
+ * @property int|null $IndepYear
+ * @property int $Population
+ * @property float|null $LifeExpectancy
+ * @property float|null $GNP
+ * @property float|null $GNPOld
+ * @property string $LocalName
+ * @property string $GovernmentForm
+ * @property string|null $HeadOfState
+ * @property int|null $Capital
+ * @property string $Code2
+ * @method static \Illuminate\Database\Eloquent\Builder|Country newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Country newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Country query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereCapital($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereCode2($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereContinent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereGNP($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereGNPOld($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereGovernmentForm($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereHeadOfState($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereIndepYear($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereLifeExpectancy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereLocalName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country wherePopulation($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereRegion($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereSurfaceArea($value)
+ */
+	class Country extends \Eloquent {}
+}
+
+namespace App\Models\WebSelf{
+/**
+ * Class Post
+ *
+ * @package App\Models\WebSelf
+ * @mixin Builder
+ * @property int $id
+ * @property string $title
+ * @property string|null $content
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int $rubric_id
+ * @property int $comment_id
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comments
+ * @property-read int|null $comments_count
+ * @property-read \App\Models\WebSelf\Rubric $rubric
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\WebSelf\Tag[] $tags
+ * @property-read int|null $tags_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Post newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Post newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Post query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereCommentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereContent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereRubricId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereUpdatedAt($value)
+ */
+	class Post extends \Eloquent {}
+}
+
+namespace App\Models\WebSelf{
+/**
+ * App\Models\WebSelf\Rubric
+ *
+ * @property int $id
+ * @property string $title
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\WebSelf\Post|null $post
+ * @method static \Illuminate\Database\Eloquent\Builder|Rubric newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Rubric newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Rubric query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Rubric whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Rubric whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Rubric whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Rubric whereUpdatedAt($value)
+ */
+	class Rubric extends \Eloquent {}
+}
+
+namespace App\Models\WebSelf{
+/**
+ * App\Models\WebSelf\Tag
+ *
+ * @property int $id
+ * @property string $label
+ * @property string $title
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\WebSelf\Post[] $posts
+ * @property-read int|null $posts_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag whereLabel($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag whereTitle($value)
+ */
+	class Tag extends \Eloquent {}
 }
 

@@ -3,7 +3,7 @@
 @section('content')
 <h1>Posts Edit</h1>
 
-<form action="{{ route('posts.update', $id) }}" method="post">
+<form action="{{ route('web-self.posts.update', $id) }}" method="post">
     @csrf
     @method('PUT')
     <input type="text" name="title" value="{{$title}}">

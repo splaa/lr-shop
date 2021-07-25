@@ -3,24 +3,16 @@
 namespace App\Http\Controllers\WebSelf;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\WebSelf\CreatePostRequest;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class PostController extends Controller
 {
     /**
-     * PostController constructor.
-     */
-    public function __construct(Request $request)
-    {
-        dump($request->route()->getName());
-        dump($request->getClientIp());
-    }
-
-
-    /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -30,7 +22,7 @@ class PostController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -40,10 +32,10 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  CreatePostRequest  $request
+     * @return Response
      */
-    public function store(Request $request)
+    public function store(CreatePostRequest $request)
     {
         dd($request->except('_token'));
     }
@@ -52,7 +44,7 @@ class PostController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show(int $id)
     {
@@ -63,7 +55,7 @@ class PostController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit(int $id)
     {
@@ -79,7 +71,7 @@ class PostController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, int $id)
     {
@@ -90,7 +82,7 @@ class PostController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(int $id)
     {
