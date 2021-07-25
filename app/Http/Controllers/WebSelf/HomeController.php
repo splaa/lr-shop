@@ -17,7 +17,7 @@ use Illuminate\View\View;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(): View
     {
 
         DB::beginTransaction();
@@ -41,6 +41,12 @@ class HomeController extends Controller
 
 
         return DB::select("select posts.* from posts where id > :id", ['id' => 2]);
+        $post = Post::with('tags')->find(4);
+
+        foreach ($post->tags as $tag) {
+            dump($tag->title);
+        }
+
         return view('web-self.home.index');
 
 
@@ -57,8 +63,6 @@ class HomeController extends Controller
     public function test()
     {
         dd($_ENV);
-
-
 
         return __METHOD__;
     }
