@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Str;
 
 /**
  * Class Post
@@ -22,7 +21,7 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'content', 'rubric_id', 'comment_id'
+        'title', 'content'
     ];
 
     public function rubric(): BelongsTo
@@ -43,10 +42,5 @@ class Post extends Model
     public function getPostDate()
     {
         return Carbon::parse($this->created_at)->diffForHumans();
-    }
-
-    public function SetTitleAttribute($title): void
-    {
-        $this->attributes['title'] = Str::title($title);
     }
 }
