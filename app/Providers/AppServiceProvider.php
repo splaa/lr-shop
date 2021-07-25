@@ -19,9 +19,9 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        \DB::listen(function ($query) {
-            dump($query->sql);
-        });
+//        \DB::listen(function ($query) {
+//            dump($query->sql);
+//        });
         Paginator::useBootstrap();
         $this->activeLinks();
         view()->share('recentPost', Post::recent());

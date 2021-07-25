@@ -30,6 +30,14 @@
                     </svg>
                     <strong>Album</strong>
                 </a>
+                @auth
+                    <a href="#">{{ auth()->user()->name }}</a>
+
+
+                    @if (auth()->user()->avatar)
+                        <img src="{{ auth()->user()->avatar}}"  width="150" alt="">
+                    @endif
+                @endauth
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
                         aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
