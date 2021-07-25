@@ -21,7 +21,7 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'content'
+        'title', 'content', 'rubric_id', 'comment_id'
     ];
 
     public function rubric(): BelongsTo
