@@ -4,9 +4,8 @@ namespace App\Providers;
 
 use App\Http\ViewComposers\RecentPostsComposer;
 use App\Models\Book\Post;
-use App\Models\WebSelf\Rubric;
 use Blade;
-
+use Illuminate\Contracts\View\View;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
@@ -20,10 +19,9 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        \DB::listen(function ( $query) {
-        \Log::channel('sql-logs')->info('hello' . $query->sql);
-        });
-
+//        \DB::listen(function ($query) {
+//            dump($query->sql);
+//        });
         Paginator::useBootstrap();
         $this->activeLinks();
         view()->share('recentPost', Post::recent());
@@ -46,10 +44,6 @@ class AppServiceProvider extends ServiceProvider
 //        });
         Blade::if('ifPublic', function () {
             return (app('context')->isPublic());
-        });
-
-        \view()->composer('web-self.layouts.footer',function ($view) {
-            $view->with('rubrics', Rubric::all());
         });
         //ToDo: Eloquent str 109
     }

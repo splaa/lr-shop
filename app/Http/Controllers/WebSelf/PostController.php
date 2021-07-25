@@ -12,11 +12,15 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Cache;
 
 class PostController extends Controller
 {
     public function index(): Factory|View|Application
     {
+        Cache::put('key', 'SplX-Cache', 60);
+//        dump('test Cache', Cache::get('key'));
+
         $title = 'Posts';
         $posts = Post::orderByDesc('id');
         return view('web-self.posts.index', compact('title', 'posts'));
