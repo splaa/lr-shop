@@ -55,7 +55,7 @@
 
 <main role="main">
     <div class="container">
-        @include('parts._errors')
+        @include('parts._alerts')
     </div>
     @yield('content')
 </main>
