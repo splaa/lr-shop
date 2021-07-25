@@ -10,15 +10,18 @@ use App\Models\WebSelf\Rubric;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\View\View;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(): View
     {
-        $post = Post::find(2);
-        /** @var Rubric $rubric */
-        $rubric = $post->rubric;
-        dd($rubric->title);
+        $post = Post::with('tags')->find(4);
+
+        foreach ($post->tags as $tag) {
+            dump($tag->title);
+        }
+
         return view('web-self.home.index');
     }
 

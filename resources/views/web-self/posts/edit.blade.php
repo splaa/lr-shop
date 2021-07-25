@@ -7,6 +7,9 @@
     @csrf
     @method('PUT')
     <input type="text" name="title" value="{{$title}}">
+    @if ($errors->has('title'))
+        <label class="error" for="title">{{ $errors->first('title') }}</label>
+    @endif
     <button type="submit">Submit</button>
     
 </form>
