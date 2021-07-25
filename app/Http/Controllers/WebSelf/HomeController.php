@@ -16,13 +16,9 @@ class HomeController extends Controller
 {
     public function index(): View
     {
-        $post = Post::with('tags')->find(4);
+        $title = 'Home Page';
 
-        foreach ($post->tags as $tag) {
-            dump($tag->title);
-        }
-
-        return view('web-self.home.index');
+        return view('web-self.home.index', ['title' => $title]);
     }
 
     public function test()

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\WebSelf\HomeController;
+use App\Http\Controllers\WebSelf\PageController;
 use App\Http\Controllers\WebSelf\PostController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -16,22 +17,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('web-self.home');
+Route::get('/page/about', [PageController::class, 'about'])->name('web-self.page.about');
 
-Route::get('contact', function () {
-    return view('web-self.contact');
-})->name('w-self.contact');
-Route::post('email', function (Request $request) {
-    return view('web-self.email', [
-        'name' => $request->get('name'),
-        'age' => $request->get('age')
-    ]);
-})->name('w-self.email');
-//Route::get('post/{id}/{slug}', static function ($id, $slug) {
-//$id += 1;
-//    $slug .= ' hello';
-//    return 'post';
-//});
 
 Route::resource('posts', PostController::class)->names('posts');
 
