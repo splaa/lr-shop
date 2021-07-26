@@ -6,6 +6,8 @@ use App\Models\Article;
 use App\Models\Comment;
 use App\Models\State;
 use App\Models\Tag;
+use App\Models\WebSelf\Post;
+use Database\Seeders\WebSelf\PostSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,6 +19,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call([
+            Post::class,
+        ]);
+
         // \App\Models\User::factory(10)->create();
 
         $tags = Tag::factory(10)->create();

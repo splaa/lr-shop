@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Http\ViewComposers\RecentPostsComposer;
 use App\Models\Book\Post;
+use App\Models\WebSelf\Rubric;
 use Blade;
 use Illuminate\Contracts\View\View;
 use Illuminate\Pagination\Paginator;
@@ -44,6 +45,10 @@ class AppServiceProvider extends ServiceProvider
 //        });
         Blade::if('ifPublic', function () {
             return (app('context')->isPublic());
+        });
+
+        \view()->composer('web-self.layouts.footer',function ($view) {
+            $view->with('rubrics', Rubric::all());
         });
         //ToDo: Eloquent str 109
     }
