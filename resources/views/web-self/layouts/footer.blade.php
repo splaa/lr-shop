@@ -20,7 +20,3 @@
         @endforeach
     </ul>
 </footer>
-
-        <p>New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="/docs/4.6/getting-started/introduction/">getting started guide</a>.</p>
-    </div>
-</footer>

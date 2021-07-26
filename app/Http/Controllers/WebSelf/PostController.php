@@ -18,11 +18,8 @@ class PostController extends Controller
 {
     public function index(): Factory|View|Application
     {
-        Cache::put('key', 'SplX-Cache', 60);
-//        dump('test Cache', Cache::get('key'));
-
         $title = 'Posts';
-        $posts = Post::orderByDesc('id');
+        $posts = Post::orderByDesc('id')->paginate(6);
         return view('web-self.posts.index', compact('title', 'posts'));
     }
 
