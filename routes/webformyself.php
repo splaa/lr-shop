@@ -1,13 +1,12 @@
 <?php
 
+use App\Http\Controllers\WebSelf\Admin\MainController;
 use App\Http\Controllers\WebSelf\HomeController;
 use App\Http\Controllers\WebSelf\Mail\ContactController;
 use App\Http\Controllers\WebSelf\PageController;
 use App\Http\Controllers\WebSelf\PostController;
 use App\Http\Controllers\WebSelf\UserController;
-use App\Mail\WebSelf\SplxMail;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +20,14 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('web-self.home');
+
+Route::group(['prefix' => 'admin', 'namespace' => 'WebSelf/Admin'], function (){
+    Route::get('/', [MainController::class, 'index']);
+});
+
+
+
+
 Route::get('/page/about', [PageController::class, 'about'])->name('web-self.page.about');
 
 
@@ -31,6 +38,11 @@ Route::get('send', [ContactController::class, 'sendSplx']);
 
 Route::get('registry', [UserController::class, 'registry'])->name('web-self.user.registry.create');
 Route::post('registry', [UserController::class, 'store'])->name('web-self.user.registry.store');
+
+
+
+
+
 
 Route::fallback(function () {
     abort(404, 'Oops! Page not found...');
