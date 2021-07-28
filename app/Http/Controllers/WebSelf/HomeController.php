@@ -18,44 +18,7 @@ class HomeController extends Controller
     {
         $title = 'Home Page';
 
-        DB::beginTransaction();
-        try {
-            $query = DB::insert(
-                'INSERT INTO posts (title, content, created_at)
-                                    VALUES (:title, :content, :createdAt)',
-                ['title' => 'Article 5', 'content' => 'content post5', 'createdAt' => now()]
-            );
-
-            DB::update(
-                'UPDATE posts SET updated_at = :now
-                    WHERE updated_at IS NULL ',
-                ['now' => now()]
-            );
-            DB::commit();
-        } catch (\Exception $e) {
-            DB::rollBack();
-            Log::info($e->getMessage());
-        }
-
-
-        return DB::select("select posts.* from posts where id > :id", ['id' => 2]);
-        $post = Post::with('tags')->find(4);
-
-        return view('web-self.home.index', ['title' => $title]);
-        foreach ($post->tags as $tag) {
-            dump($tag->title);
-        }
-
-        return view('web-self.home.index');
-
-
-class HomeController extends Controller
-{
-    public function index(): View
-    {
-        $title = 'Home Page';
-
-        Log::channel('i_love_this_logging_thing')->info("Action log debug test", ['my-string' => 'log me', "run"]);
+        Log::channel('i_love_this_logging_thing')->debug("Action log debug test", ['my-string' => 'log me', "run"]);
         return view('web-self.home.index', ['title' => $title]);
     }
 
