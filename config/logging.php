@@ -46,6 +46,17 @@ return [
             'path' => storage_path('logs/laravel.log'),
             'level' => env('LOG_LEVEL', 'debug'),
         ],
+        'sql-logs' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/sql.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+        ],
+        'i_love_this_logging_thing' => [
+            'driver' => 'custom',
+            'handler' => App\Logging\MySQLLoggingHandler::class,
+            'via' => App\Logging\MySQLCustomLogger::class,
+            'level' => 'debug',
+        ],
 
         'daily' => [
             'driver' => 'daily',
