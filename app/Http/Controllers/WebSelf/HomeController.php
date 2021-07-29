@@ -18,7 +18,7 @@ class HomeController extends Controller
     {
         $title = 'Home Page';
 
-        Log::channel('i_love_this_logging_thing')->debug("Action log debug test", ['my-string' => 'log me', "run"]);
+        Log::channel('i_love_this_logging_thing')->info("Action log debug test", ['my-string' => 'log me', "run"]);
         return view('web-self.home.index', ['title' => $title]);
     }
 
