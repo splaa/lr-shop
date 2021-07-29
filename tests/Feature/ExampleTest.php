@@ -14,8 +14,8 @@ class ExampleTest extends TestCase
      */
     public function test_example()
     {
-        $response = $this->get('/');
-
+        $response = $this->get(route('web-self.posts.index'));
+dd($response->getStatusCode());
         $response->assertStatus(200);
     }
 }
