@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Http\Controllers\Auth;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,5 +24,10 @@ class LoginControllerTest extends TestCase
         $response->assertStatus(Response::HTTP_FOUND);
 
         $response->assertSessionHasErrors('email');
+    }
+
+    public function testLoginAuthhenticatesAndRedirectsUser()
+    {
+        $user = User::factory()->create();
     }
 }
