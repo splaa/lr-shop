@@ -8,6 +8,8 @@ use App\Http\Controllers\WebSelf\PostController;
 use App\Http\Controllers\WebSelf\UserController;
 use Illuminate\Support\Facades\Route;
 
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +20,25 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', function () {
+    $name = 'Andrii';
+    $age = '43';
+    return view('web-self.index', compact('name', 'age'));
+});
+
+Route::get('contact', function () {
+    return view('web-self.contact');
+})->name('w-self.contact');
+Route::post('email', function (Request $request) {
+    return view('web-self.email', [
+        'name' => $request->get('name'),
+        'age' => $request->get('age')
+    ]);
+})->name('w-self.email');
+Route::get('post/{id}/{slug}', static function ($id, $slug) {
+    return 'post';
+});
 
 Route::get('/', [HomeController::class, 'index'])->name('web-self.home');
 
