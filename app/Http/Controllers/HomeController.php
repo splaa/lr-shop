@@ -2,18 +2,10 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
 use Illuminate\Http\Request;
-=======
-use App\Models\Article;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
->>>>>>> 9031d8c (Controllers)
 
 class HomeController extends Controller
 {
-<<<<<<< HEAD
     /**
      * Create a new controller instance.
      *
@@ -30,9 +22,6 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-=======
-    public function index(): Factory|View|Application
->>>>>>> 9031d8c (Controllers)
     {
         return view('home');
     }
