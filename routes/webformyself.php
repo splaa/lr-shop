@@ -1,11 +1,15 @@
 <?php
 
+<<<<<<< HEAD
 use App\Http\Controllers\WebSelf\Admin\MainController;
 use App\Http\Controllers\WebSelf\HomeController;
 use App\Http\Controllers\WebSelf\Mail\ContactController;
 use App\Http\Controllers\WebSelf\PageController;
 use App\Http\Controllers\WebSelf\PostController;
 use App\Http\Controllers\WebSelf\UserController;
+=======
+use App\Http\Controllers\WebSelf\PostController;
+>>>>>>> 9031d8c (Controllers)
 use Illuminate\Support\Facades\Route;
 
 use Illuminate\Http\Request;
@@ -36,8 +40,16 @@ Route::post('email', function (Request $request) {
         'age' => $request->get('age')
     ]);
 })->name('w-self.email');
-Route::get('post/{id}/{slug}', static function ($id, $slug) {
-    return 'post';
+//Route::get('post/{id}/{slug}', static function ($id, $slug) {
+//$id += 1;
+//    $slug .= ' hello';
+//    return 'post';
+//});
+
+Route::resource('posts', PostController::class)->names('posts');
+
+Route::fallback(function () {
+    abort(404, 'Oops! Page not found...');
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('web-self.home');
