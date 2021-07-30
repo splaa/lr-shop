@@ -2,18 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 
-class HomeController
+class HomeController extends Controller
 {
-    public function index(): Factory|View|Application
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-        $articles = Article::lastLimit(5);
-        return view('app.home', [
-            'articles' => $articles
-        ]);
+        $this->middleware('auth');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
+    {
+        return view('home');
     }
 }

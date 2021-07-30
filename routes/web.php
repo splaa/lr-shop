@@ -69,3 +69,7 @@ Route::get('backend/sales', function (AnalyticsService $analytics){
     return view('book.backend.sales-graphs')
         ->with('analytics', $analytics);
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
