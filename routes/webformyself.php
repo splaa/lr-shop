@@ -31,7 +31,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'WebSelf/Admin'], function (){
 Route::get('/page/about', [PageController::class, 'about'])->name('web-self.page.about');
 
 
-Route::resource('posts', PostController::class)->names('web-self.posts');
+//Route::resource('posts', PostController::class)->names('ws.posts');
+Route::get('posts', [PostController::class, 'index'])->name('ws.posts.index');
 
 Route::get('send', [ContactController::class, 'sendSplx']);
 

@@ -6,29 +6,36 @@ namespace App\Http\Controllers\WebSelf;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\WebSelf\CreatePostRequest;
-use App\Models\WebSelf\Post;
+use App\RepositoryInterface\EloquentPostRepository;
+use App\RepositoryInterface\PostRepositoryInterface;
+use App\RepositoryInterface\PostRepositoryInterface as Post;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Collection;
 use JetBrains\PhpStorm\NoReturn;
 
 class PostController extends Controller
 {
-    protected Post $post;
+    protected PostRepositoryInterface $post;
+    protected string $title;
 
-    public function __construct(Post $post)
+    public function __construct(EloquentPostRepository $post, $title = 'Posts')
     {
         $this->post = $post;
+        $this->title = $title;
     }
 
-    public function index(): Factory|View|Application
+    public function index(): Factory|View|Application|Collection
     {
-        $title = 'Posts';
-        $posts = $this->post::orderByDesc('id')->paginate(6);
+//        $posts = $this->post::orderByDesc('id')->paginate(6);
+        $posts = $this->post::all();
+dd('hello');
+
         return view('web-self.posts.index', [
-            'title' => $title,
+            'title' => $this->title,
             'posts' => $posts
         ]);
     }

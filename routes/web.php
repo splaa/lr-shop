@@ -34,9 +34,6 @@ Route::get('/articles/tag/{tag}', [ArticleController::class, 'allByTag'])->name(
 Route::get('/hello', [HelloController::class, 'index']);
 
 
-//Book
-//Route::get('/',[WelcomeController::class,'index'])->name('welcome');
-
 Route::get('first-greeting', function () {
     return Greeting::first()->body;
 });
