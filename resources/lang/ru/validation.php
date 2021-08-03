@@ -156,10 +156,10 @@ return [
     'attributes' => [
         'name'                  => 'Имя',
         'username'              => 'Никнейм',
-        'email'                 => 'E-Mail адрес',
+        'email'                 => 'E-mail',
         'first_name'            => 'Имя',
         'last_name'             => 'Фамилия',
-        'password'              => 'Пароль',
+        'password'              => 'password',
         'password_confirmation' => 'Подтверждение пароля',
         'city'                  => 'Город',
         'country'               => 'Страна',
